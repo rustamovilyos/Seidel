@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Метод Зейделя</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+          integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <link href="https://fonts.cdnfonts.com/css/russian" rel="stylesheet">
+  </head>
+  <body>
+  <div class="container m-3">
+    <h1 class="text-warning">Решения систем линейных уравнений методом Зейделя</h1>
+    <form method="POST" class="m-2">
+      {% csrf_token %}
+      <div class="text-info m-2">
+      {{ form.as_p }}
+        </div>
+      <button class="btn btn-info" type="submit">Решать</button>
+    </form>
+    {% if solution %}
+        {% for xi in solution %}
+          <h3 class="text-light">Решение: {{ xi }}</h3>
+        {% endfor %}
+    {% endif %}
+      </div>
+  </body>
+</html>
